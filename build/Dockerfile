@@ -3,6 +3,7 @@ FROM ballerina/jvm-runtime:2.0
 
 LABEL maintainer="dev@ballerina.io"
 RUN mkdir -p /home/ballerina/choreo/choreo/
+RUN mkdir -p /home/ballerina/target/
 COPY endpoints.yaml /home/ballerina/choreo/endpoints.yaml
 COPY endpoints.yaml /home/ballerina/choreo/choreo/endpoints.yaml
 RUN mkdir -p /home/ballerina/.choreo/.choreo/
@@ -89,6 +90,8 @@ COPY juan-h2_data_api-0.1.0.jar /home/ballerina/jars/
 COPY juan-h2_data_api-8522177165699841690-observability-symbols.jar /home/ballerina/jars/
 COPY tv_characters.mv.db /home/ballerina/tv_characters.mv.db
 COPY tv_characters.trace.db /home/ballerina/tv_characters.trace.db
+COPY tv_characters.mv.db /home/ballerina/target/tv_characters.mv.db
+COPY tv_characters.trace.db /home/ballerina/target/tv_characters.trace.db
 RUN addgroup troupe \
     && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
     && apk add --update --no-cache bash \
