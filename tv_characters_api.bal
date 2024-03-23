@@ -16,7 +16,7 @@ final jdbc:Client jdbcClient;
 
 function init() returns error? {
     // Initializes the JDBC client.
-    jdbcClient = check new ("jdbc:h2:file:./target/tv_characters",
+    jdbcClient = check new ("jdbc:h2:file:./tv_characters",
         "rootUser", "rootPassword"
     );
     io:println("Service initialized.. ");
