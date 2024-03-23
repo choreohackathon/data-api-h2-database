@@ -40,7 +40,7 @@ COPY commons-pool-1.5.6.wso2v1.jar /home/ballerina/jars/
 COPY constraint-native-1.4.0.jar /home/ballerina/jars/ 
 COPY crypto-native-2.5.0.jar /home/ballerina/jars/ 
 COPY file-native-1.9.0.jar /home/ballerina/jars/ 
-COPY h2-2.0.206.jar /home/ballerina/jars/ 
+COPY h2-2.1.210.jar /home/ballerina/jars/ 
 COPY http-native-2.10.12.jar /home/ballerina/jars/ 
 COPY io-native-1.6.0.jar /home/ballerina/jars/ 
 COPY jakarta.activation-api-2.0.1.jar /home/ballerina/jars/ 
