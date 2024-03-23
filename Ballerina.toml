@@ -1,0 +1,13 @@
+[package]
+org = "juan"
+name = "h2_data_api"
+version = "0.1.0"
+distribution = "2201.8.1"
+
+[build-options]
+observabilityIncluded = true
+
+[[platform.java11.dependency]]
+artifactId = "h2"
+version = "2.0.206"
+groupId = "com.h2database"
