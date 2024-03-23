@@ -89,6 +89,6 @@ RUN addgroup troupe \
 WORKDIR /home/ballerina
 
 EXPOSE  9090
-USER ballerina
+USER 10001
 
 CMD java -Xdiag -cp "juan-h2_data_api-0.1.0.jar:jars/*" 'juan.h2_data_api.0.$_init'
