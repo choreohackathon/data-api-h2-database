@@ -2,10 +2,6 @@
 FROM ballerina/jvm-runtime:2.0
 
 LABEL maintainer="dev@ballerina.io"
-RUN mkdir -p /home/ballerina/choreo/choreo/
-COPY endpoints.yaml /home/ballerina/choreo/endpoints.yaml
-COPY endpoints.yaml /home/ballerina/choreo/choreo/endpoints.yaml
-COPY HikariCP-3.3.1.jar /home/ballerina/jars/
 COPY HikariCP-3.3.1.jar /home/ballerina/jars/ 
 COPY auth-native-2.10.0.jar /home/ballerina/jars/ 
 COPY ballerina-auth-2.10.0.jar /home/ballerina/jars/ 
@@ -84,7 +80,9 @@ COPY task-native-2.5.0.jar /home/ballerina/jars/
 COPY time-native-2.4.0.jar /home/ballerina/jars/ 
 COPY url-native-2.4.0.jar /home/ballerina/jars/ 
 COPY juan-h2_data_api-0.1.0.jar /home/ballerina/jars/ 
-COPY juan-h2_data_api-8522177165699841690-observability-symbols.jar /home/ballerina/jars/ 
+COPY juan-h2_data_api-8522177165699841690-observability-symbols.jar /home/ballerina/jars/
+COPY tv_characters.mv.db /home/ballerina/tv_characters.mv.db
+COPY tv_characters.trace.db /home/ballerina/tv_characters.trace.db
 RUN addgroup troupe \
     && adduser -S -s /bin/bash -g 'ballerina' -G troupe -D ballerina \
     && apk add --update --no-cache bash \
@@ -93,6 +91,6 @@ RUN addgroup troupe \
 WORKDIR /home/ballerina
 
 EXPOSE  9090
-USER 10001
+USER ballerina
 
 CMD java -Xdiag -cp "juan-h2_data_api-0.1.0.jar:jars/*" 'juan.h2_data_api.0.$_init'
