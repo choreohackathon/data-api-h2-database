@@ -1,0 +1,97 @@
+openapi: 3.0.1
+info:
+  title: Tv Characters
+  version: 0.1.0
+servers:
+- url: "{server}:{port}/tv_characters"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "9090"
+paths:
+  /top10:
+    get:
+      operationId: getTop10
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TVCharacter'
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+  /character:
+    post:
+      operationId: postCharacter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TVCharacter'
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+components:
+  schemas:
+    ErrorPayload:
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Reason phrase
+        path:
+          type: string
+          description: Request path
+        method:
+          type: string
+          description: Method type of the request
+        message:
+          type: string
+          description: Error message
+        timestamp:
+          type: string
+          description: Timestamp of the error
+        status:
+          type: integer
+          description: Relevant HTTP status code
+          format: int32
+    TVCharacter:
+      required:
+      - firstName
+      - id
+      - lastName
+      - tvShow
+      - voteCount
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        tvShow:
+          type: string
+        voteCount:
+          type: integer
+          format: int64
