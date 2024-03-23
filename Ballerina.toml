@@ -2,12 +2,13 @@
 org = "juan"
 name = "h2_data_api"
 version = "0.1.0"
-distribution = "2201.8.1"
+distribution = "2024.03.23"
 
 [build-options]
 observabilityIncluded = true
+cloud = "docker"
 
 [[platform.java11.dependency]]
 artifactId = "h2"
-version = "2.0.206"
+version = "2.1.210"
 groupId = "com.h2database"
