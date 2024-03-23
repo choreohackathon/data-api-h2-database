@@ -2,6 +2,12 @@
 FROM ballerina/jvm-runtime:2.0
 
 LABEL maintainer="dev@ballerina.io"
+RUN mkdir -p /home/ballerina/choreo/choreo/
+COPY endpoints.yaml /home/ballerina/choreo/endpoints.yaml
+COPY endpoints.yaml /home/ballerina/choreo/choreo/endpoints.yaml
+RUN mkdir -p /home/ballerina/.choreo/.choreo/
+COPY endpoints.yaml /home/ballerina/.choreo/endpoints.yaml
+COPY endpoints.yaml /home/ballerina/.choreo/.choreo/endpoints.yaml
 COPY HikariCP-3.3.1.jar /home/ballerina/jars/ 
 COPY auth-native-2.10.0.jar /home/ballerina/jars/ 
 COPY ballerina-auth-2.10.0.jar /home/ballerina/jars/ 
@@ -91,6 +97,6 @@ RUN addgroup troupe \
 WORKDIR /home/ballerina
 
 EXPOSE  9090
-USER ballerina
+USER 10001
 
 CMD java -Xdiag -cp "juan-h2_data_api-0.1.0.jar:jars/*" 'juan.h2_data_api.0.$_init'
